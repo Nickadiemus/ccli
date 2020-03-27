@@ -3,7 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
+	// "encoding/json"
 )
 
 type Person struct {
@@ -23,27 +25,75 @@ func displayErrorUsage(s string) string {
 	return string("usage: of command [" + s + "] is not supported\nFor help try:\n\nccli help\nccli <command> help\nccli <command> <subcommand> help")
 }
 
+// func createDir(dname string) bool {
+// 	return true
+// }
 
+func loadFile(fname string) string {
+	return "gr8 Success!"
+}
 
+func fileExists(path string) bool {
+	src, err := os.Stat(path)
+
+	if os.IsNotExist(err) && src == nil {
+		return false
+	}
+	return true
+}
+
+func dirExists(dname string, homedir string) bool {
+	path := homedir + "/" + dname
+	src, err := os.Stat(path)
+
+	if os.IsNotExist(err) {
+		// create new dir
+		newDir := os.MkdirAll(path, 0755)
+		fmt.Println(newDir)
+		if newDir != nil {
+			panic(err)
+			return false
+		}
+		return true
+	}
+
+	fmt.Println("src:", string(src))
+
+	return true
+}
 
 func main() {
+	fileName := "contacts.json"
+	dataDirName := ".ccli/"
+	homePath := os.Getenv("HOME")
+	// holds contact info
+	var contactList []Person
 
-	// TODO: Create/Find local storage path to store contact info
+	// checks if home path exists
+	if homePath == "" {
+		log.Fatal("Error, no envvar for $HOME")
+		os.Exit(1)
+	}
+
+	fmt.Printf("homePath: %s\n", homePath)
 
 	// pseudo
 	// If $CCLI_DATA_PATH exists
-	//		*check if contacts.json|csv|txt 
-	//		if contacts.json|csv|txt exists
-	//			1. data := load(contacts.json|csv|txt)
-	//			2. convert(data, contactList)
+	// 		*check if contacts.json|csv|txt
+	// 		if contacts.json|csv|txt exists
+	// 			1. data := load(contacts.json|csv|txt)
+	// 			2. convert(data, contactList)
 	// else
-	//		create $CCLI_DATA_PATH
+	// 		create $CCLI_DATA_PATH
 
-
-
-
-	// holds contact info
-	contactList := []Person
+	if dirExists(dataDirName, string(homePath)) {
+		// check for data file to load
+		pathToFile := homePath + dataDirName + fileName
+		if fileExists(pathToFile) {
+			data := loadFile(pathToFile)
+			fmt.Println("data:", data)
+		}
+	}
 
 	// sub commands for cli
 	createCommand := flag.NewFlagSet("create", flag.ExitOnError)
@@ -116,9 +166,8 @@ func main() {
 	// debug
 	fmt.Printf("createFirstNamePtr: %s\ncreateLastNamePtr: %s\ncreateCityPtr: %s\ncreateAddrPtr: %s\ncreateEmailPtr: %s\ncreatePhonePtr: %s\n", *createFirstNamePtr, *createLastNamePtr, *createCityPtr, *createAddrPtr, *createEmailPtr, *createPhonePtr)
 
-
 	// TODO: Save the changes (if any back to the data structure)
-	
+
 	return
 
 }
