@@ -1,20 +1,21 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
-	// "encoding/json"
 )
 
 type Person struct {
-	firstName   string
-	lastName    string
-	city        string
-	address     string
-	email       string
-	phoneNumber int64
+	FirstName   string
+	LastName    string
+	City        string
+	Address     string
+	Email       string
+	PhoneNumber int64
 }
 
 func displayusage() string {
@@ -25,17 +26,55 @@ func displayErrorUsage(s string) string {
 	return string("usage: of command [" + s + "] is not supported\nFor help try:\n\nccli help\nccli <command> help\nccli <command> <subcommand> help")
 }
 
-// func createDir(dname string) bool {
-// 	return true
-// }
+func convertJSONToContact(json []Person, p *[]Person) {
+	*p = json
+}
 
-func loadFile(fname string) string {
-	return "gr8 Success!"
+// func encodeTemplate(template *Person, p Person)
+
+func loadFile(fname string) []Person {
+	jsonFile, err := os.Open(fname)
+
+	//	check if opening file throws an error
+	if err != nil {
+		log.Fatal(err)
+		os.Exit(1)
+	}
+
+	defer jsonFile.Close()
+	var persons []Person
+	rawBytes, _ := ioutil.ReadAll(jsonFile)
+
+	json.Unmarshal([]byte(rawBytes), &persons)
+
+	return persons
+}
+
+func save(contacts []Person, savePath string) {
+	// anon function
+	// person := func(f string, l string, c string, a string, e string, p int64) *Person {
+	// 	return &Person{
+	// 		FirstName:   f,
+	// 		LastName:    l,
+	// 		City:        c,
+	// 		Address:     a,
+	// 		Email:       e,
+	// 		PhoneNumber: p,
+	// 	}
+	// }
+
+	// scontact := []Person
+
+	// for _, p := range contacts {
+
+	// }
+	data, _ := json.Marshal(contacts)
+
+	_ = ioutil.WriteFile(savePath, data, 0644)
 }
 
 func fileExists(path string) bool {
 	src, err := os.Stat(path)
-
 	if os.IsNotExist(err) && src == nil {
 		return false
 	}
@@ -44,21 +83,18 @@ func fileExists(path string) bool {
 
 func dirExists(dname string, homedir string) bool {
 	path := homedir + "/" + dname
+	fmt.Println("Path:", path)
 	src, err := os.Stat(path)
 
-	if os.IsNotExist(err) {
+	if os.IsNotExist(err) && src.Name() != dname {
 		// create new dir
 		newDir := os.MkdirAll(path, 0755)
-		fmt.Println(newDir)
 		if newDir != nil {
 			panic(err)
 			return false
 		}
 		return true
 	}
-
-	fmt.Println("src:", string(src))
-
 	return true
 }
 
@@ -76,22 +112,19 @@ func main() {
 	}
 
 	fmt.Printf("homePath: %s\n", homePath)
-
-	// pseudo
-	// If $CCLI_DATA_PATH exists
-	// 		*check if contacts.json|csv|txt
-	// 		if contacts.json|csv|txt exists
-	// 			1. data := load(contacts.json|csv|txt)
-	// 			2. convert(data, contactList)
-	// else
-	// 		create $CCLI_DATA_PATH
+	fmt.Println("dirExists:", dirExists(dataDirName, string(homePath)))
 
 	if dirExists(dataDirName, string(homePath)) {
 		// check for data file to load
-		pathToFile := homePath + dataDirName + fileName
+		pathToFile := homePath + "/" + dataDirName + fileName
+		fmt.Println("fileExists:", fileExists(pathToFile))
 		if fileExists(pathToFile) {
 			data := loadFile(pathToFile)
-			fmt.Println("data:", data)
+			if data != nil {
+				convertJSONToContact(data, &contactList)
+			}
+			fmt.Println("contactList:", contactList)
+
 		}
 	}
 
@@ -109,7 +142,7 @@ func main() {
 	createPhonePtr := createCommand.Int64("pnum", -1, "-pnum - sets value for phoneNumber (OPTIONAL)")
 
 	//flags for create command
-	// listAllPtr := flag.String("la", "0", "-la - lists all")
+	listAllPtr := flag.String("la", "0", "-la - lists all")
 
 	// exists if sub command wasn't sepcificed
 	if len(os.Args) < 2 {
@@ -158,15 +191,23 @@ func main() {
 	}
 	if listCommand.Parsed() {
 		fmt.Println(*listCommand)
+		// verify parsed content can execute
+		if *listAllPtr == "0" {
+			flag.Usage()
+			os.Exit(1)
+		}
+
 	}
 	if helpCommand.Parsed() {
 		fmt.Println(*helpCommand)
 	}
 	// check for parsed commands and it's tails
 	// debug
-	fmt.Printf("createFirstNamePtr: %s\ncreateLastNamePtr: %s\ncreateCityPtr: %s\ncreateAddrPtr: %s\ncreateEmailPtr: %s\ncreatePhonePtr: %s\n", *createFirstNamePtr, *createLastNamePtr, *createCityPtr, *createAddrPtr, *createEmailPtr, *createPhonePtr)
+	// fmt.Printf("createFirstNamePtr: %s\ncreateLastNamePtr: %s\ncreateCityPtr: %s\ncreateAddrPtr: %s\ncreateEmailPtr: %s\ncreatePhonePtr: %s\n", *createFirstNamePtr, *createLastNamePtr, *createCityPtr, *createAddrPtr, *createEmailPtr, *createPhonePtr)
 
+	savePath := homePath + "/" + dataDirName + fileName
 	// TODO: Save the changes (if any back to the data structure)
+	save(contactList, savePath)
 
 	return
 
