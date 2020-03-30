@@ -4,12 +4,14 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"os"
 	"sort"
 	"strings"
 )
+
+var Trace *log.Logger
 
 type Person struct {
 	FirstName   string
@@ -88,7 +90,7 @@ func loadFile(fname string) []Person {
 
 	defer jsonFile.Close()
 	var persons []Person
-	rawBytes, _ := ioutil.ReadAll(jsonFile)
+	rawBytes, _ := os.ioutil.ReadAll(jsonFile)
 
 	json.Unmarshal([]byte(rawBytes), &persons)
 
@@ -104,7 +106,7 @@ func save(contacts []Person, savePath string) {
 	data, _ := json.Marshal(contacts)
 
 	// writes file to path provided along with []byte{}
-	_ = ioutil.WriteFile(savePath, data, 0644)
+	_ = os.ioutil.WriteFile(savePath, data, 0644)
 }
 
 func fileExists(path string) bool {
@@ -179,6 +181,14 @@ func printPerson(p []Person) {
 	for _, person := range p {
 		fmt.Println(person)
 	}
+}
+
+/**
+ * Description: 	sorting method
+ * Purpose: 		sorts list of contacts dependent upon user input
+**/
+func Init(traceHandle io.Writer) {
+	Trace = log.New(traceHandle, "TRACE: ", log.Ldate|log.Ltime|log.Lshortfile)
 }
 
 func main() {
