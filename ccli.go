@@ -9,8 +9,7 @@ import (
 	"os"
 	"sort"
 	"strings"
-
-	"github.com/fxtlabs/date"
+	"time"
 )
 
 var Trace *log.Logger // custom logger for multiwriting
@@ -186,19 +185,20 @@ func printPerson(p []Person) {
 }
 
 /**
- * Description: 	sorting method
- * Purpose: 		sorts list of contacts dependent upon user input
+ * Description: 	initializes custom logger
+ * Purpose: 		creates a multistream logger for redundency
 **/
 func InitLogger() {
-	fpath := "./.logs/log-" + date.Today().String() + ".txt"
-	log.Println(fpath)
+	t := time.Now()
+	d := time.Date(t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second(), 0, time.UTC)
+	fpath := "./.logs/log-" + d.String()
 	file, err := os.OpenFile(fpath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatalln("Failed to open log file")
-		log.Fatalln(err)
 	}
 
 	multilogger := io.MultiWriter(file, os.Stdout)
+	// config logger
 	log.SetOutput(multilogger)
 	log.SetFlags(0)
 }
