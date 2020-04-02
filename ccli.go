@@ -3,13 +3,16 @@ package main
 import (
 	"encoding/json"
 	"flag"
-	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
 	"os"
 	"sort"
 	"strings"
+	"time"
 )
+
+var Trace *log.Logger // custom logger for multiwriting
 
 type Person struct {
 	FirstName   string
@@ -121,13 +124,13 @@ func fileExists(path string) bool {
 **/
 func dirExists(dname string, homedir string) bool {
 	path := homedir + "/" + dname
-	// fmt.Println("Path:", path)
+	// log.Println("Path:", path)
 	src, err := os.Stat(path)
 
 	if os.IsNotExist(err) && src == nil {
 		// create new dir
 		newDir := os.MkdirAll(path, 0755)
-		// fmt.Println("newDir:", newDir)
+		// log.Println("newDir:", newDir)
 		if newDir != nil {
 			panic(err)
 		}
@@ -164,12 +167,12 @@ func sortContactsBy(method string, list []Person) {
 	if method[0:1] == "a" {
 		printPerson(list)
 		By(acsend).Sort(list)
-		fmt.Println()
+		log.Println()
 		printPerson(list)
 	} else {
 		printPerson(list)
 		By(descend).Sort(list)
-		fmt.Println()
+		log.Println()
 		printPerson(list)
 	}
 }
@@ -177,11 +180,31 @@ func sortContactsBy(method string, list []Person) {
 // used for debugging
 func printPerson(p []Person) {
 	for _, person := range p {
-		fmt.Println(person)
+		log.Println(person)
 	}
 }
 
+/**
+ * Description: 	initializes custom logger
+ * Purpose: 		creates a multistream logger for redundency
+**/
+func InitLogger() {
+	t := time.Now()
+	d := time.Date(t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second(), 0, time.UTC)
+	fpath := "./.logs/log-" + d.String()
+	file, err := os.OpenFile(fpath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	if err != nil {
+		log.Fatalln("Failed to open log file")
+	}
+
+	multilogger := io.MultiWriter(file, os.Stdout)
+	// config logger
+	log.SetOutput(multilogger)
+	log.SetFlags(0)
+}
+
 func main() {
+	InitLogger()
 	fileName := "contacts.json"
 	dataDirName := ".ccli/"
 	homePath := os.Getenv("HOME")
@@ -193,19 +216,19 @@ func main() {
 		os.Exit(1)
 	}
 
-	// fmt.Printf("homePath: %s\n", homePath)
-	// fmt.Println("dirExists:", dirExists(dataDirName, string(homePath)))
+	log.Printf("homePath: %s\n", homePath)
+	log.Println("dirExists:", dirExists(dataDirName, string(homePath)))
 
 	if dirExists(dataDirName, string(homePath)) {
 		// check for data file to load
 		pathToFile := homePath + "/" + dataDirName + fileName
-		// fmt.Println("fileExists:", fileExists(pathToFile))
+		// log.Println("fileExists:", fileExists(pathToFile))
 		if fileExists(pathToFile) {
 			data := loadFile(pathToFile)
 			if data != nil {
 				convertJSONToContact(data, &contactList)
 			}
-			// fmt.Println("contactList:", contactList)
+			log.Println("contactList:", contactList)
 
 		}
 	}
@@ -228,7 +251,7 @@ func main() {
 
 	// exists if sub command wasn't sepcificed
 	if len(os.Args) < 2 {
-		fmt.Println(displayusage())
+		log.Println(displayusage())
 		os.Exit(1)
 	}
 
@@ -243,7 +266,7 @@ func main() {
 	case "help":
 		helpCommand.Parse(os.Args[2:])
 	default:
-		fmt.Println(displayErrorUsage(string(os.Args[1])))
+		log.Println(displayErrorUsage(string(os.Args[1])))
 		os.Exit(1)
 	}
 
@@ -273,7 +296,7 @@ func main() {
 	}
 	// List Commmands
 	if listCommand.Parsed() {
-		fmt.Println(*listCommand)
+		log.Println(*listCommand)
 
 		if *listOrderPtr == "0" {
 			flag.Usage()
@@ -284,7 +307,7 @@ func main() {
 
 	}
 	if helpCommand.Parsed() {
-		fmt.Println(*helpCommand)
+		log.Println(*helpCommand)
 	}
 
 	// saves contacts

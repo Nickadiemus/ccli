@@ -1,0 +1,65 @@
+homePath: /home/nick
+dirExists: true
+contactList: [{Tia Simpson  462 Hoyt Street, Longbranch, Oklahoma, 9946 tiasimpson@permadyne.com 0} {Stanton Norris  127 Virginia Place, Greer, New York, 2760 stantonnorris@permadyne.com 0} {Stanley Short  783 Woodruff Avenue, Dahlen, Massachusetts, 4754 stanleyshort@permadyne.com 0} {Roy Underwood  673 Mill Lane, Orin, Arkansas, 2304 royunderwood@permadyne.com 0} {Rocha Sampson  655 Brigham Street, Alden, Marshall Islands, 1673 rochasampson@permadyne.com 0} {Rene Fischer  925 Clermont Avenue, Curtice, Georgia, 2840 renefischer@permadyne.com 0} {Polly Cook  182 Hampton Place, Rockbridge, Indiana, 9516 pollycook@permadyne.com 0} {Nona Bradford  961 George Street, Wyano, Kentucky, 9192 nonabradford@permadyne.com 0} {Nash Moreno  834 Dare Court, Weogufka, Nevada, 2189 nashmoreno@permadyne.com 0} {Mcfadden Terry  946 Front Street, Biddle, South Carolina, 817 mcfaddenterry@permadyne.com 0} {Maxine Brooks  647 Junius Street, Vienna, North Dakota, 6016 maxinebrooks@permadyne.com 0} {Mary Wright  333 Hart Street, Leroy, New Hampshire, 3523 marywright@permadyne.com 0} {Margret Haynes  910 Indiana Place, Winston, Illinois, 5823 margrethaynes@permadyne.com 0} {Manning Mayo  880 Clarendon Road, Swartzville, Puerto Rico, 1329 manningmayo@permadyne.com 0} {Mamie Higgins  166 Schenectady Avenue, Carlos, South Dakota, 4672 mamiehiggins@permadyne.com 0} {Lynn Sherman  457 Wilson Avenue, Lorraine, Michigan, 5062 lynnsherman@permadyne.com 0} {Love Bolton  820 Homecrest Court, Yukon, Vermont, 5237 lovebolton@permadyne.com 0} {Hutchinson Ingram  239 Forbell Street, Salix, Missouri, 1774 hutchinsoningram@permadyne.com 0} {Hancock Boyer  769 Jay Street, Shelby, Mississippi, 9693 hancockboyer@permadyne.com 0} {Georgina Potts  522 Leonard Street, Cliffside, Wisconsin, 6240 georginapotts@permadyne.com 0} {Florine Berg  269 Rapelye Street, Abrams, Connecticut, 220 florineberg@permadyne.com 0} {Ferrell May  418 Kane Street, Dowling, Pennsylvania, 9538 ferrellmay@permadyne.com 0} {Ferguson Franco  385 Madoc Avenue, Springhill, Virgin Islands, 6851 fergusonfranco@permadyne.com 0} {Estrada Ashley  919 Neptune Court, Lemoyne, Federated States Of Micronesia, 391 estradaashley@permadyne.com 0} {Cox Franklin  256 Sunnyside Court, Faywood, Delaware, 2935 coxfranklin@permadyne.com 0} {Constance Oneill  534 Plymouth Street, Cecilia, Colorado, 3904 constanceoneill@permadyne.com 0} {Colette Jarvis  799 Seaview Court, Springville, District Of Columbia, 5409 colettejarvis@permadyne.com 0} {Carrillo Pate  441 Boerum Street, Walton, Ohio, 5537 carrillopate@permadyne.com 0} {Byers Burt  690 Ocean Avenue, Kiskimere, Texas, 4517 byersburt@permadyne.com 0} {Bessie Vasquez  537 Butler Place, Hollymead, West Virginia, 1571 bessievasquez@permadyne.com 0}]
+{0x4c58f0 list true map[order:0xc0000962c0] map[order:0xc0000962c0] [] 1 <nil>}
+{Tia Simpson  462 Hoyt Street, Longbranch, Oklahoma, 9946 tiasimpson@permadyne.com 0}
+{Stanton Norris  127 Virginia Place, Greer, New York, 2760 stantonnorris@permadyne.com 0}
+{Stanley Short  783 Woodruff Avenue, Dahlen, Massachusetts, 4754 stanleyshort@permadyne.com 0}
+{Roy Underwood  673 Mill Lane, Orin, Arkansas, 2304 royunderwood@permadyne.com 0}
+{Rocha Sampson  655 Brigham Street, Alden, Marshall Islands, 1673 rochasampson@permadyne.com 0}
+{Rene Fischer  925 Clermont Avenue, Curtice, Georgia, 2840 renefischer@permadyne.com 0}
+{Polly Cook  182 Hampton Place, Rockbridge, Indiana, 9516 pollycook@permadyne.com 0}
+{Nona Bradford  961 George Street, Wyano, Kentucky, 9192 nonabradford@permadyne.com 0}
+{Nash Moreno  834 Dare Court, Weogufka, Nevada, 2189 nashmoreno@permadyne.com 0}
+{Mcfadden Terry  946 Front Street, Biddle, South Carolina, 817 mcfaddenterry@permadyne.com 0}
+{Maxine Brooks  647 Junius Street, Vienna, North Dakota, 6016 maxinebrooks@permadyne.com 0}
+{Mary Wright  333 Hart Street, Leroy, New Hampshire, 3523 marywright@permadyne.com 0}
+{Margret Haynes  910 Indiana Place, Winston, Illinois, 5823 margrethaynes@permadyne.com 0}
+{Manning Mayo  880 Clarendon Road, Swartzville, Puerto Rico, 1329 manningmayo@permadyne.com 0}
+{Mamie Higgins  166 Schenectady Avenue, Carlos, South Dakota, 4672 mamiehiggins@permadyne.com 0}
+{Lynn Sherman  457 Wilson Avenue, Lorraine, Michigan, 5062 lynnsherman@permadyne.com 0}
+{Love Bolton  820 Homecrest Court, Yukon, Vermont, 5237 lovebolton@permadyne.com 0}
+{Hutchinson Ingram  239 Forbell Street, Salix, Missouri, 1774 hutchinsoningram@permadyne.com 0}
+{Hancock Boyer  769 Jay Street, Shelby, Mississippi, 9693 hancockboyer@permadyne.com 0}
+{Georgina Potts  522 Leonard Street, Cliffside, Wisconsin, 6240 georginapotts@permadyne.com 0}
+{Florine Berg  269 Rapelye Street, Abrams, Connecticut, 220 florineberg@permadyne.com 0}
+{Ferrell May  418 Kane Street, Dowling, Pennsylvania, 9538 ferrellmay@permadyne.com 0}
+{Ferguson Franco  385 Madoc Avenue, Springhill, Virgin Islands, 6851 fergusonfranco@permadyne.com 0}
+{Estrada Ashley  919 Neptune Court, Lemoyne, Federated States Of Micronesia, 391 estradaashley@permadyne.com 0}
+{Cox Franklin  256 Sunnyside Court, Faywood, Delaware, 2935 coxfranklin@permadyne.com 0}
+{Constance Oneill  534 Plymouth Street, Cecilia, Colorado, 3904 constanceoneill@permadyne.com 0}
+{Colette Jarvis  799 Seaview Court, Springville, District Of Columbia, 5409 colettejarvis@permadyne.com 0}
+{Carrillo Pate  441 Boerum Street, Walton, Ohio, 5537 carrillopate@permadyne.com 0}
+{Byers Burt  690 Ocean Avenue, Kiskimere, Texas, 4517 byersburt@permadyne.com 0}
+{Bessie Vasquez  537 Butler Place, Hollymead, West Virginia, 1571 bessievasquez@permadyne.com 0}
+
+{Bessie Vasquez  537 Butler Place, Hollymead, West Virginia, 1571 bessievasquez@permadyne.com 0}
+{Byers Burt  690 Ocean Avenue, Kiskimere, Texas, 4517 byersburt@permadyne.com 0}
+{Carrillo Pate  441 Boerum Street, Walton, Ohio, 5537 carrillopate@permadyne.com 0}
+{Colette Jarvis  799 Seaview Court, Springville, District Of Columbia, 5409 colettejarvis@permadyne.com 0}
+{Constance Oneill  534 Plymouth Street, Cecilia, Colorado, 3904 constanceoneill@permadyne.com 0}
+{Cox Franklin  256 Sunnyside Court, Faywood, Delaware, 2935 coxfranklin@permadyne.com 0}
+{Estrada Ashley  919 Neptune Court, Lemoyne, Federated States Of Micronesia, 391 estradaashley@permadyne.com 0}
+{Ferguson Franco  385 Madoc Avenue, Springhill, Virgin Islands, 6851 fergusonfranco@permadyne.com 0}
+{Ferrell May  418 Kane Street, Dowling, Pennsylvania, 9538 ferrellmay@permadyne.com 0}
+{Florine Berg  269 Rapelye Street, Abrams, Connecticut, 220 florineberg@permadyne.com 0}
+{Georgina Potts  522 Leonard Street, Cliffside, Wisconsin, 6240 georginapotts@permadyne.com 0}
+{Hancock Boyer  769 Jay Street, Shelby, Mississippi, 9693 hancockboyer@permadyne.com 0}
+{Hutchinson Ingram  239 Forbell Street, Salix, Missouri, 1774 hutchinsoningram@permadyne.com 0}
+{Love Bolton  820 Homecrest Court, Yukon, Vermont, 5237 lovebolton@permadyne.com 0}
+{Lynn Sherman  457 Wilson Avenue, Lorraine, Michigan, 5062 lynnsherman@permadyne.com 0}
+{Mamie Higgins  166 Schenectady Avenue, Carlos, South Dakota, 4672 mamiehiggins@permadyne.com 0}
+{Manning Mayo  880 Clarendon Road, Swartzville, Puerto Rico, 1329 manningmayo@permadyne.com 0}
+{Margret Haynes  910 Indiana Place, Winston, Illinois, 5823 margrethaynes@permadyne.com 0}
+{Mary Wright  333 Hart Street, Leroy, New Hampshire, 3523 marywright@permadyne.com 0}
+{Maxine Brooks  647 Junius Street, Vienna, North Dakota, 6016 maxinebrooks@permadyne.com 0}
+{Mcfadden Terry  946 Front Street, Biddle, South Carolina, 817 mcfaddenterry@permadyne.com 0}
+{Nash Moreno  834 Dare Court, Weogufka, Nevada, 2189 nashmoreno@permadyne.com 0}
+{Nona Bradford  961 George Street, Wyano, Kentucky, 9192 nonabradford@permadyne.com 0}
+{Polly Cook  182 Hampton Place, Rockbridge, Indiana, 9516 pollycook@permadyne.com 0}
+{Rene Fischer  925 Clermont Avenue, Curtice, Georgia, 2840 renefischer@permadyne.com 0}
+{Rocha Sampson  655 Brigham Street, Alden, Marshall Islands, 1673 rochasampson@permadyne.com 0}
+{Roy Underwood  673 Mill Lane, Orin, Arkansas, 2304 royunderwood@permadyne.com 0}
+{Stanley Short  783 Woodruff Avenue, Dahlen, Massachusetts, 4754 stanleyshort@permadyne.com 0}
+{Stanton Norris  127 Virginia Place, Greer, New York, 2760 stantonnorris@permadyne.com 0}
+{Tia Simpson  462 Hoyt Street, Longbranch, Oklahoma, 9946 tiasimpson@permadyne.com 0}
